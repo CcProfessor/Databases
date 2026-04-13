@@ -5,9 +5,10 @@
     "outDir": "./dist",
 
     // Node (CommonJS)
-    "module": "node16",
+    "module": "commonjs",
     "target": "es2020",
-    "moduleResolution": "node16",
+    "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
 
     // Tipagens
     "types": ["node"],
