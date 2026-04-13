@@ -3,11 +3,17 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+function env(key: string): string {
+  const value = process.env[key];
+  if (!value) throw new Error(`Missing env var: ${key}`);
+  return value;
+}
+
 export const db = mysql.createPool({
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
+  host: env("DB_HOST"),
+  port: Number(env("DB_PORT")),
+  user: env("DB_USER"),
+  password: env("DB_PASS"),
+  database: env("DB_NAME"),
   connectionLimit: 10
 });
